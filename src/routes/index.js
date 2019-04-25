@@ -1,14 +1,11 @@
 import React from 'react'
-import { createHashHistory } from 'history';
 import { HashRouter, Route, Link } from 'react-router-dom';
-import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import Login from '../modules/login';
-import SignUp from '../modules/signUp';
 import Profile from '../modules/profile';
-import Explore from '../modules/explore';
-
 import createStore from '../store/createStore'
+import Country from '../modules/country';
+import Tictactoe from '../components/game/tictactoe';
+import Toe from '../components/game/toe';
 
 class App extends React.Component {
   constructor(){
@@ -24,11 +21,11 @@ class App extends React.Component {
       <Provider store={store}>
         <HashRouter >
           <div>
-            <Route exact path="/" component={Login} />
-            {/* <Route exact path="/signup" component={SignUp} /> */}
-            {/* <Route exact path="/profile" component={Profile} />
-            <Route exact path="/posts" component={Explore} /> */}
-          </div>
+            <Route exact path="/" component={Profile} />
+            <Route exact path="/country" component={Country} />
+            <Route exact path="/tictactoe" component={Tictactoe} />
+            <Route exact path="/toe" component={Toe} />
+            </div>
         </HashRouter >
       </Provider>
     )

@@ -1,9 +1,7 @@
-@import 'base';
-@import '~bootstrap/scss/bootstrap.scss';
+
 @import './header';
-@import './login';
-@import './profile';
-@import './explore';
+@import './game.scss';
+
 
 html {
   box-sizing: border-box;
@@ -20,4 +18,10 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+.m-top-20{
+  margin-top: 20px;
+}
+.m-lft-50{
+  margin-left: 50px;
 }

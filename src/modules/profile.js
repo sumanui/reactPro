@@ -3,65 +3,87 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../redux/actions";
 import Header from "../components/header/profileHeader";
-import { isUserAlreadyLoggedIn } from "../generic/index";
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        data: []
+      todoList:[],
+      todoSwitch:"",
+      inputState:""
     };
   }
-  componentDidMount() {
-    const { login, history } = this.props;
-    !isUserAlreadyLoggedIn() ? history.push("/") : null;
-  }
+
   componentWillMount() {
-    this.props.userBlogRequest();
-    
+    var url = "https://jsonplaceholder.typicode.com/todos";
+    fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        this.setState({ todoList: data });
+      })
+      .catch(error => console.log(error))
   }
-  componentWillReceiveProps(nextProps) {
+
+  handleChange(id,e){
+    var todoList=this.state.todoList
+    for(var i=0;i<todoList.length; i++){
+      if(todoList[i].id== id){
+        todoList[i].title = e.target.value
+      }
+    }
     this.setState({
-        data: nextProps.blog.data
+      todoList:todoList
     })
-    console.log(nextProps.blog.data);
-    
   }
+
+  edit(id){
+    var todoList=this.state.todoList
+    for(var i=0; i<todoList.length; i++){
+      if(todoList[i].id == id){
+        this.setState({
+          todoSwitch:id
+        })
+      }
+    }
+  }
+  deleteTodo(e){
+    var id = e.target.id;
+    var x = this.state.todoList.filter(d => {
+      return id != d.id
+    })
+    this.setState({
+      todoList : x
+    })
+  }
+
+
   render() {
-      
-    const { email, password } = this.state;
     return (
       <div className="login-view container-fluid">
         <Header />
         <div className="row">
           <div className="col-sm-12">
-            <div className="row">
-              <div className="col-sm-4" />
-              <div className="col-sm-4">
-                <h1 className="pageHeading">Explore</h1>
-              </div>
-              <div className="col-sm-4" />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
             <div className="col-sm-2" />
             <div className="col-sm-8">
-            { this.state.data != {} || this.state.data != [] || this.state.data != undefined ? (this.state.data.map((val, i) => (
-                <div className="container" key={i} value={val._id}>
-                    <div className="box">
-                        <div className="head">Written By: {val.username}</div>
-                        <div className="post">
-                            <div className="post-title">{val.title}</div>
-                            <br />
-                            {val.post}
-                        </div>
-                    </div>
-                </div>)
-            )) : null }
+            <ul>
+              {this.state.todoList.map((data, key) => (
+              <li key={key} >
+                {this.state.todoSwitch !=data.id? <label>
+                  {data.title}
+                </label>:<input type="text" value={data.title} onChange={e=> this.handleChange(`${data.id}`,e) }/>}
+                <button type="button" id={data.id} onClick={(e)=> this.edit(`${data.id}`)}>
+                   Edit
+                </button>
+                <button type="button" id={data.id} onClick={(e)=> this.deleteTodo(e)}>
+                   Delete
+                </button>
+              </li>
+              ))}
+            </ul>
+            
             </div>
-            <div className="col-sm-2" />
           </div>
         </div>
       </div>
@@ -71,7 +93,6 @@ class Profile extends React.Component {
 
 export function mapStateToProps(state) {
   return {
-    login: state.login,
     blog: state.blog.userBlog
   };
 }

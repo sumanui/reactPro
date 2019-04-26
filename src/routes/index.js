@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import Profile from '../modules/profile';
 import createStore from '../store/createStore'
 import Country from '../modules/country';
-import Tictactoe from '../components/game/tictactoe';
 import Toe from '../components/game/toe';
+import Login from '../components/login/login';
 
 class App extends React.Component {
   constructor(){
@@ -21,10 +21,10 @@ class App extends React.Component {
       <Provider store={store}>
         <HashRouter >
           <div>
-            <Route exact path="/" component={Profile} />
+            {/* <Route exact path="/" component={Login} /> */}
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/country" component={Country} />
-            <Route exact path="/tictactoe" component={Tictactoe} />
-            <Route exact path="/toe" component={Toe} />
+            <Route exact path="/" component={Toe} />
             </div>
         </HashRouter >
       </Provider>

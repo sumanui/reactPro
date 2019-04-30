@@ -13,3 +13,8 @@ export const USER_BLOG_ERROR = 'USER_BLOG_ERROR';
 export const POST_REQUEST = 'POST_REQUEST';
 export const POST_SUCCESS = 'POST_SUCCESS';
 export const POST_ERROR = 'POST_ERROR';
+
+export const POST_API_REQUEST = 'POST_API_REQUEST';
+export const POST_API_SUCCESS = 'POST_API_SUCCESS';
+export const POST_API_ERROR = 'POST_API_ERROR';
+export const POST_API_CLEAR = 'POST_API_CLEAR';

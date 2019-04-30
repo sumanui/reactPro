@@ -16,3 +16,9 @@ export const userBlogError = createAction(constants.USER_BLOG_ERROR);
 export const postRequest = createAction(constants.POST_REQUEST);
 export const postSuccess = createAction(constants.POST_SUCCESS);
 export const postError = createAction(constants.POST_ERROR);
+
+export const postApiRequest = createAction(constants.POST_API_REQUEST);
+export const postApiSuccess = createAction(constants.POST_API_SUCCESS);
+export const postApiError = createAction(constants.POST_API_ERROR);
+export const postApiClear = createAction(constants.POST_API_CLEAR);
+

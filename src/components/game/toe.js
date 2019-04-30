@@ -7,39 +7,38 @@ class Toe extends React.Component {
             space: Array(9).fill(''),
             player: 'x',
             winner: '',
-            // totalmoves:0
+            totalmoves: 0
         }
     }
 
     clicked(data) {
-        var space =this.state.space
-        if(this.state.winner == 'x' || this.state.winner == '0'){
-            console.log(this.state.winner);
-            
+        var space = this.state.space
+        if (this.state.winner == 'x' || this.state.winner == '0') {
+
         }
-        else if(space[data] == ''){
+        else if (space[data] == '') {
             space[data] = this.state.player
             this.setState({
-                space:space,
+                space: space,
                 player: this.state.player === 'x' ? '0' : 'x',
-                // totalmoves:this.state.totalmoves++
+                totalmoves: this.state.totalmoves++
             })
         }
         var result = this.checkWinner()
 
-        if(result == 'x'){
+        if (result == 'x') {
             this.setState({
-                winner:'x',
+                winner: 'x',
             })
-        }else if(result == '0'){
+        } else if (result == '0') {
             this.setState({
                 winner: '0'
             })
         }
 
     }
-    checkWinner(){
-        let winner =[
+    checkWinner() {
+        let winner = [
             [0, 1, 2],
             [3, 4, 5],
             [6, 7, 8],
@@ -52,13 +51,19 @@ class Toe extends React.Component {
 
         let { player, space } = this.state
 
-        console.log(winner.length);
-        for(var i = 0; i<winner.length; i++){
-            const [a,b,c] = winner[i]
-            if(space[a] == space[c] && space[a] == space[b] && space[b] == space[c]){
+        for (var i = 0; i < winner.length; i++) {
+            const [a, b, c] = winner[i]
+            if (space[a] == space[c] && space[a] == space[b] && space[b] == space[c]) {
                 return space[a]
             }
         }
+    }
+    reset() {
+        this.setState({
+            space: Array(9).fill(''),
+            winner: ''
+        })
+
     }
 
     render() {
@@ -66,16 +71,22 @@ class Toe extends React.Component {
             <div id="game">
                 <div id="border">
                     {this.state.space.map((key, data) => (
-                        <div key={data} className="square"  onClick={() => this.clicked(data)}>
+                        <div key={data} className="square" onClick={() => this.clicked(data)}>
                             {key}
                         </div>
                     ))}
-                 
+
+                </div>
+                <div>
+                    totalMoves : {this.state.totalMoves}
                 </div>
                 <div className="">
                     <div>
                         winner : {this.state.winner}
                     </div>
+                    <button onClick={() => this.reset()}>
+                        reset
+                    </button>
                 </div>
             </div>
         )

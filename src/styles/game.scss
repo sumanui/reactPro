@@ -19,3 +19,24 @@
     border: 1px solid #000;
     display: inline-block;
 }
+
+// _____________________________________
+
+.totalCountDiv{
+    width: 35%;
+    margin: 1.5rem auto;
+}
+.noBox, .total{
+    border: thin solid lightgray;
+    background-color: #eee;
+    width: 40%;
+    text-align: center;
+    font-size: 36px;
+    border-radius: 5px;
+    margin: 1rem 5%;
+    display: inline-block;
+}
+.total{
+    width: 100%;
+    margin: auto;
+}

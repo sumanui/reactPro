@@ -5,27 +5,29 @@ import Profile from '../modules/profile';
 import createStore from '../store/createStore'
 import Country from '../modules/country';
 import Toe from '../components/game/toe';
-import Login from '../components/login/login';
+import Game from '../container/game';
+import login from '../container/login';
 
 class App extends React.Component {
-  constructor(){
-    super()
-    this.state={}
+  constructor(props) {
+    super(props)
+    this.state = {}
   }
-  shouldComponentUpdate () {
+  shouldComponentUpdate() {
     return false
-  }  
-  render () {
+  }
+  render() {
     const store = createStore();
     return (
       <Provider store={store}>
         <HashRouter >
           <div>
-            {/* <Route exact path="/" component={Login} /> */}
+            <Route exact path="/" component={login} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/country" component={Country} />
-            <Route exact path="/" component={Toe} />
-            </div>
+            <Route exact path="/toe" component={Toe} />
+            <Route exact path="/playgound" component={Game} />
+          </div>
         </HashRouter >
       </Provider>
     )

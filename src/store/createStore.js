@@ -15,7 +15,6 @@ const createStore = (initialState = {}) => {
       composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     }
   }
-
    const middleware = [sagaMiddleware];
    const store = createReduxStore(
     makeRootReducer(),

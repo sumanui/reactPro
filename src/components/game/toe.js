@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileModal from './profileModal';
 
 class Toe extends React.Component {
     constructor() {
@@ -66,6 +67,16 @@ class Toe extends React.Component {
 
     }
 
+    openProModal() {
+        this.setState({
+            modalPro: true
+        })
+    }
+    closeProModal(){
+        this.setState({
+            modalPro:false
+        })
+    }
     render() {
         return (
             <div id="game">
@@ -88,6 +99,16 @@ class Toe extends React.Component {
                         reset
                     </button>
                 </div>
+                <div className="row">
+                    <div className="col-md-12 col-sm-12">
+                        <button type="button" onClick={(e) => this.openProModal(e)}>
+                            image
+                        </button>
+                       
+                    </div>
+                </div>
+                {this.state.modalPro ? <ProfileModal {...this.state} {...this.props} closeProModal={(e)=> this.closeProModal(e)} /> : null}
+
             </div>
         )
     }

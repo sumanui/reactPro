@@ -22,3 +22,9 @@ export const postApiSuccess = createAction(constants.POST_API_SUCCESS);
 export const postApiError = createAction(constants.POST_API_ERROR);
 export const postApiClear = createAction(constants.POST_API_CLEAR);
 
+// ____________________________ IMAGE ACTION _____________________________
+
+export const imageUploadRequest = createAction(constants.IMAGE_UPLOAD_REQUEST);
+export const imageUploadSuccess = createAction(constants.IMAGE_UPLOAD_SUCCESS);
+export const imageUploadError = createAction(constants.IMAGE_UPLOAD_ERROR);
+export const imageUploadClear = createAction(constants.IMAGE_UPLOAD_CLEAR);

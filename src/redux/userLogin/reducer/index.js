@@ -5,7 +5,6 @@ import * as constants from '../../constants';
 let initialState = {
   userLogin: {
     data:       {},
-    isLoggedIn: false,
     isLoading:  false,
     isError:    false,
     isSuccess:  false,
@@ -24,7 +23,6 @@ const userLoginRequest = (state, action) => update(state, {
 const userLoginSuccess = (state, action) => update(state, {
   userLogin: {
     data:       {$set: action.payload},
-    isLoggedIn: {$set: true},
     isLoading:  {$set: false},
     isError:    {$set: false},
     isSuccess:  {$set: true},

@@ -80,6 +80,7 @@ class Playground extends React.Component {
     }
 
     render() {
+        
         const{inputVal}=this.state
         return (
             <div className="conatiner">

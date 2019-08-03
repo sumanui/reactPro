@@ -22,8 +22,8 @@ class App extends React.Component {
       <Provider store={store}>
         <HashRouter >
           <div>
-            <Route exact path="/" component={login} />
-            <Route exact path="/profile" component={Profile} />
+            {/* <Route exact path="/" component={login} /> */}
+            <Route exact path="/" component={Profile} />
             <Route exact path="/country" component={Country} />
             <Route exact path="/toe" component={Toe} />
             <Route exact path="/playgound" component={Game} />

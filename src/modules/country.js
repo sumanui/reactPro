@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/header/profileHeader";
 import Json from "../json/jsonCountry.json"
-import ProfileModal from "../components/modals/profileModal";
 class Country extends React.Component {
     constructor(props) {
         super(props);
@@ -36,18 +35,6 @@ class Country extends React.Component {
                 })  
             }
         }
-    }
-
-    openProModal(value){
-        this.setState({
-            valueProps: value,
-            modalPro:true
-        })
-    }
-    closeProModal(){
-        this.setState({
-            modalPro:false
-        })
     }
 
     render() {
@@ -88,17 +75,7 @@ class Country extends React.Component {
                         </select>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-12 col-sm-12">
-                        <button type="button" onClick={(e)=> this.openProModal("profile")}>
-                            Profile
-                        </button>
-                        <button type="button" onClick={(e)=> this.openProModal("country")}>
-                            Country
-                        </button>
-                    </div>
-                </div>
-               {this.state.modalPro ? <ProfileModal {...this.state} {...this.props} closeProModal={(e)=> this.closeProModal(e)} /> : null}
+                
             </div>
 
         );

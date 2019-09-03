@@ -1,0 +1,19 @@
+@mixin fontStyle($fontSize , $fontWeight ,$color){
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $color;
+    font-family: sans-serif;
+}
+@mixin buttonStyle($border, $borderRadius, $width, $height, $color, $fontSize, $fontWeight) {
+    border: $border;
+    border-radius: $borderRadius;
+    width: $width;
+    height: $height;
+    background-color: #fff;
+    color: $color;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+}
+@mixin selectBoxStyle() {
+    
+}

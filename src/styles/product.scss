@@ -1,0 +1,48 @@
+.mainDivProduct{
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    .particularProduct{
+        height: 100%;
+        width: 100%;
+        .productImgBox{
+            width: 80%;
+            display: inline-block;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .productDescription{
+            h4, h5{
+                @include fontStyle(12px , 500 ,#4a4a4a);
+            }
+            h3{
+                @include fontStyle(12px , 600 , cadetblue);
+            }
+           .btnCart{
+               @include buttonStyle(1px solid #9b9b9b, 3px, 80px, 25px, #4a4a4a, 12px, 500);
+              &:hover{
+                  color: #ffffff;
+                  background-color: cadetblue;
+                  transition: .5s;
+              }
+           }
+        }
+    }
+}
+.filterDiv{
+    width: 100%;
+    display: inline-block;
+    height: 100%;   
+    margin-top: 25px;
+   
+    .selectFilter{
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid #000;
+        select{
+            @include buttonStyle(1px solid #9b9b9b, 3px, 110px, 25px, #4a4a4a, 12px, 500);
+        }
+    }
+}

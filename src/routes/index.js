@@ -7,6 +7,7 @@ import Country from '../modules/country';
 import Toe from '../components/game/toe';
 import Game from '../container/game';
 import login from '../container/login';
+import ProductShow from '../components/product/productShow';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class App extends React.Component {
         <HashRouter >
           <div>
             {/* <Route exact path="/" component={login} /> */}
-            <Route exact path="/" component={Profile} />
+            {/* <Route exact path="/" component={Profile} /> */}
+            <Route exact path="/" component={ProductShow} />
             <Route exact path="/country" component={Country} />
             <Route exact path="/toe" component={Toe} />
             <Route exact path="/playgound" component={Game} />

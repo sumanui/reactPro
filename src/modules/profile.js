@@ -13,7 +13,6 @@ class Profile extends React.Component {
       inputState:""
     };
   }
-
   componentWillMount() {
     var url = "https://jsonplaceholder.typicode.com/todos";
     fetch(url)
@@ -25,7 +24,6 @@ class Profile extends React.Component {
       })
       .catch(error => console.log(error))
   }
-
   handleChange(id,e){
     var todoList=this.state.todoList
     for(var i=0;i<todoList.length; i++){
@@ -37,7 +35,6 @@ class Profile extends React.Component {
       todoList:todoList
     })
   }
-
   edit(id){
     var todoList=this.state.todoList
     for(var i=0; i<todoList.length; i++){
@@ -57,8 +54,6 @@ class Profile extends React.Component {
       todoList : x
     })
   }
-
-
   render() {
     return (
       <div className="login-view container-fluid">
@@ -82,7 +77,6 @@ class Profile extends React.Component {
               </li>
               ))}
             </ul>
-            
             </div>
           </div>
         </div>

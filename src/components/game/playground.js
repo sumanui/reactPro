@@ -26,10 +26,13 @@ class Playground extends React.Component {
         var x = 0;
         for (var j = 0; j < 4; j++) {
             var total = copy[Math.floor(Math.random() * copy.length)]
+            console.log(total);
+            
             copy.splice(copy.indexOf(total), 1)
+            console.log(copy);
+            
             x += total
         }
-
         this.setState({
             total: x
         })
@@ -43,7 +46,8 @@ class Playground extends React.Component {
                 continue;
             }
             res += Number(this.state.result[i]);
-
+            console.log(res);
+            
         }
         if (this.state.result.length == 4 && res == this.state.total) {
             this.setState({

@@ -7,7 +7,10 @@ export default class ProductShow extends React.Component {
         this.state = {
             productState: products,
             productsSize: [],
-            cartquantity: []
+            cartquantity: [],
+            cartValue: "",
+            quantity: 1,
+            totalQuantity:1
         }
     }
 
@@ -64,20 +67,29 @@ export default class ProductShow extends React.Component {
     }
 
     addToCard(id) {
-        let productState = this.state.productState
+        var { cartValue, cartquantity, productState } = this.state
         for (let i = 0; i < productState.length; i++) {
-           if(productState[i].id == id){
-               console.log(productState[i].name);
-               this.setState({
-                   cartquantity: productState[i].name
-               })
-           }
+            if (productState[i].id == id) {
+                cartquantity.push(productState[i].name)
+                cartValue = productState[i].name
+            }
+        }
+        this.setState({
+            cartquantity,
+            cartValue
+        })
+    }
+
+    moreQuantity(name) {
+        var { cartquantity,quantity } = this.state
+        for (let i = 0; i < cartquantity.length; i++) {
+            if (cartquantity[i] == name) {
+            }
         }
     }
 
     render() {
-console.log(this.state.cartquantity);
-
+        console.log(this.state.quantity);
         return (
             <div>
                 <div className="mainDivProduct col-md-9">
@@ -86,7 +98,7 @@ console.log(this.state.cartquantity);
                             <div className="productImgBox"><img src={require("../../assets/images/" + data.img)} alt={data.img} />
                             </div>
                             <div className="productDescription"><h4>{data.name}</h4><h5>Rs{data.price}</h5><h3>{data.size.join(',')}</h3>
-                                <button type="button" className="btnCart" onClick={() => this.addToCard(data.id)}>Add To Cart</button>
+                                <button type="button" className={this.state.cartValue == `${data.name}` ? "disableBtn btnCart" : "btnCart"} onClick={() => this.state.cartValue == `${data.name}` ? null : this.addToCard(data.id)}>Add To Cart</button>
                             </div>
                         </div>
                         </div>
@@ -113,9 +125,11 @@ console.log(this.state.cartquantity);
                         {this.state.cartquantity.length == 0 ? null : this.state.cartquantity.map((data, key) => (
                             <li key={key}>
                                 {data}
-                                <button>add more quantity</button>
+                                <button type="button" onClick={(e) => this.moreQuantity(data)}>add more quantity</button>
+                                <label>product quantity<span>{this.state.quantity}</span></label>
                             </li>
                         ))}
+                        <label>total quantity<span>{this.state.totalQuantity}</span></label>
                     </ul>
                 </div>
             </div>

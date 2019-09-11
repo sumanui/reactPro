@@ -9,8 +9,7 @@ export default class ProductShow extends React.Component {
             productsSize: [],
             cartquantity: [],
             cartValue: "",
-            quantity: 1,
-            totalQuantity:1
+            totalQuantity: 1,
         }
     }
 
@@ -70,7 +69,7 @@ export default class ProductShow extends React.Component {
         var { cartValue, cartquantity, productState } = this.state
         for (let i = 0; i < productState.length; i++) {
             if (productState[i].id == id) {
-                cartquantity.push(productState[i].name)
+                cartquantity.push(productState[i])
                 cartValue = productState[i].name
             }
         }
@@ -81,15 +80,32 @@ export default class ProductShow extends React.Component {
     }
 
     moreQuantity(name) {
-        var { cartquantity,quantity } = this.state
-        for (let i = 0; i < cartquantity.length; i++) {
-            if (cartquantity[i] == name) {
+        var { cartquantity } = this.state
+        for (let j = 0; j < cartquantity.length; j++) {
+            if (cartquantity[j].name == name) {
+                cartquantity[j].qty = isNaN(cartquantity[j].qty) ? 0 : cartquantity[j].qty;
+                cartquantity[j].qty++;
+                this.state.totalQuantity++
             }
         }
+        this.setState({
+            cartquantity
+        })
+    }
+    removeQuantity(name){
+        var { cartquantity } = this.state
+        for (let j = 0; j < cartquantity.length; j++) {
+            if (cartquantity[j].name == name) {
+                cartquantity[j].qty = isNaN(cartquantity[j].qty) ? 0 : cartquantity[j].qty;
+                cartquantity[j].qty--;
+            }
+        }
+        this.setState({
+            cartquantity
+        })
     }
 
     render() {
-        console.log(this.state.quantity);
         return (
             <div>
                 <div className="mainDivProduct col-md-9">
@@ -124,9 +140,10 @@ export default class ProductShow extends React.Component {
                     <ul>
                         {this.state.cartquantity.length == 0 ? null : this.state.cartquantity.map((data, key) => (
                             <li key={key}>
-                                {data}
-                                <button type="button" onClick={(e) => this.moreQuantity(data)}>add more quantity</button>
-                                <label>product quantity<span>{this.state.quantity}</span></label>
+                                {data.name}
+                                <button type="button" onClick={(e) => this.moreQuantity(data.name)}>+</button>
+                                <button type="button" onClick={(e) => this.removeQuantity(data.name)}>-</button>
+                                <label>product quantity<span>{data.qty}</span></label>
                             </li>
                         ))}
                         <label>total quantity<span>{this.state.totalQuantity}</span></label>

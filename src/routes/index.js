@@ -8,6 +8,7 @@ import Toe from '../components/game/toe';
 import Game from '../container/game';
 import login from '../container/login';
 import ProductShow from '../components/product/productShow';
+import Triangle from '../components/astricka/triangle';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class App extends React.Component {
           <div>
             {/* <Route exact path="/" component={login} /> */}
             {/* <Route exact path="/" component={Profile} /> */}
-            <Route exact path="/" component={ProductShow} />
+            {/* <Route exact path="/" component={ProductShow} /> */}
+            <Route exact path = "/" component={Triangle} />
             <Route exact path="/country" component={Country} />
             <Route exact path="/toe" component={Toe} />
             <Route exact path="/playgound" component={Game} />

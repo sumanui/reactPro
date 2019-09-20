@@ -53,13 +53,26 @@ export default class ProductShow extends React.Component {
                 if (copyProduct[i].size[j] == id) {
                     productsSize.push(copyProduct[i])
                 }
+                if (document.getElementById(id).checked == false && copyProduct[i].size[j] == id) {
+                    // let array = productsSize.filter((item) => item.size != id)
+                    // var result = productsSize.filter(function (a) {
+                        // console.log(!(a.size), (a.size) = true);
+                        // return !this[a.size] && (this[a.size] = true);
+                    // });
+                    // console.log(result)
+                    // consolensole.log(productsSize);
+                    // console.log(copyProduct[i].size[j], id);
+                    // for (let i = 0; i < productsSize.length; i++) {
+                    //     for (let j = 0; j < productsSize[i].size.length; j++) {
+                    //         if (productsSize[i].size[j] == id) {
+                    //             productsSize.splice(i, 1)
+                    //             console.log(productsSize);
+                    //         }
+                    //     }
+                    // }
+                }
             }
         }
-        // console.log(document.getElementById(id).checked);
-        // if (document.getElementById(id).checked == false) {
-        //     productsSize.filter((item) => item.size != id)
-        //     console.log(productsSize);
-        // }
         this.setState({
             productState: [...new Set(productsSize)]
         })
@@ -92,7 +105,7 @@ export default class ProductShow extends React.Component {
             cartquantity
         })
     }
-    removeQuantity(name){
+    removeQuantity(name) {
         var { cartquantity } = this.state
         for (let j = 0; j < cartquantity.length; j++) {
             if (cartquantity[j].name == name) {
@@ -111,8 +124,8 @@ export default class ProductShow extends React.Component {
                 <div className="mainDivProduct col-md-9">
                     {this.state.productState.map((data, key) => (
                         <div className="col-md-3 m-top-20" key={key}><div className="particularProduct">
-                            <div className="productImgBox"><img src={require("../../assets/images/" + data.img)} alt={data.img} />
-                            </div>
+                            {/* <div className="productImgBox"><img src={require("../../assets/images/" + data.img)} alt={data.img} />
+                            </div> */}
                             <div className="productDescription"><h4>{data.name}</h4><h5>Rs{data.price}</h5><h3>{data.size.join(',')}</h3>
                                 <button type="button" className={this.state.cartValue == `${data.name}` ? "disableBtn btnCart" : "btnCart"} onClick={() => this.state.cartValue == `${data.name}` ? null : this.addToCard(data.id)}>Add To Cart</button>
                             </div>
